@@ -1,12 +1,107 @@
 ---
-title: Using YOUR-PRODUCT-NAME
+title: Using Aerospike Service Broker for PCF
 owner: Partners
 ---
 
-This topic describes how to use YOUR-PRODUCT-NAME.
+##<a id='using'></a> Using the Aerospike Service Broker
 
-##<a id='using'></a> Using YOUR-PRODUCT-NAME
+Aerospike Service Broker for PCF can be used both via Pivotal Apps Manager and the CLI. Both methods are outlined below. An example application which uses Aerospike Service Broker for PCF has also been created to help application developers get started with Aerospike Service Broker for PCF, and can be [downloaded here](https://github.com/aerospike/cf-example-application/archive/master.zip).
 
-**This topic should include any instructions for how to use the service or dashboard created by the tile. Give procedures for how to perform the different functions offered by your product, and provide screenshots where necessary.** 
+##<a id="create"></a> Creating a Service for the Aerospike database
 
-**You can also use this section to include information about Architecture and Troubleshooting for known errors. If you include a Troubleshooting section, follow the Symptom/Explanation format used in the [Okta Troubleshooting](http://docs.pivotal.io/p-identity/okta/troubleshooting.html) topic**.
+The folowing procedures describe how to create a service which uses one of the plans published by the Aerospike Service Broker for PCF. This can be done via the Pivotal Apps Manager or Using the Pivotal Cloud Foundry CLI.
+
+### Using Pivotal Apps Manager
+
+1. From within Pivotal Apps Manager, select Marketplace from the left navigation menu under Spaces. The Services Marketplace displays.
+1. Select **Aerospike Service Broker** from the displayed tiles and click to view the available plans.
+1. Click on the appropriate **Select this plan** button to select the required **Aerospike Service Plan**.
+1. In the Instance Name field, enter a name that will identify this specific Aerospike service instance.
+1. From the Add to Space drop-down list, select the space where you or other users will deploy the applications that will bind to the service.
+1. Click the **Add** button.
+
+### Using the CLI
+
+1. Run the following command to view the available service plans.
+
+    ```
+    $ cf marketplace
+    ```
+
+    This should produce the output:
+
+    ```
+    Getting services from marketplace in org system / space apps-manager as admin...
+    OK
+
+    service          plans                           description
+    aerospike        <plan1>, <plan2>, ... <planN>   Service Broker implementation for an Aerospike database
+
+    TIP:  Use 'cf marketplace -s SERVICE' to view descriptions of individual plans of a given service.
+    ```
+
+    Note that the plans will match the namespaces that have been configured on the Aerospike database
+
+1. Type the following command to create the service plan:
+
+    ```
+    $ cf create-service aerospike <service-plan-name> <service-instance-name>
+    ```
+    The service-plan-name is as seen in the Services marketplace – in this example, “cf_session” – and the service-instance-name is a descriptive name that you want to use for the service.
+
+    <br />For example (assuming a plan named **cf_session** exists)
+
+    ```
+    $ cf create-service aerospike cf_session aerospike_session
+    ```
+
+##<a id="bind"></a> Binding an Application to the Aerospike Service
+
+The following procedures describe how to bind an Aerospike service instance to your Pivotal Cloud Foundry application. This can be done via the Pivotal Apps Manager or Using the Pivotal Cloud Foundry CLI.
+
+### Using Pivotal Apps Manager
+
+1. Select the application that you wish to bind to the service. A page displays showing the already bound services and instances for this application.
+1. Click Bind. A list of available services displays.
+1. Click the Bind button for the Aerospike service you want to bind to this application.
+1. Click the Show Advanced Options button
+1. In the Add Parameters section add a paramter with name of **setname** and value of the name of the set this application should use to store its data.
+1. Using the Pivotal Cloud Foundry CLI, start or restage your application.
+
+    ```
+    $ cf restage <application-name>
+    ```
+
+### Using the CLI
+
+1. Run the following command to view running service instances.
+
+    ```
+    $ cf services
+    ```
+    This should produce the output:
+
+    ```
+    Getting services in org system / space apps-manager as admin...
+    OK
+
+    name                service         plan        bound apps   last operation
+    aerospike_session   aerospike       cf_session               create succeeded
+    ```
+
+1. Run the following command to bind the application to the service instance.
+
+    ```
+    $ cf bind-service <application-name> <service-instance-name>
+    ```
+
+    For example:
+
+    ```
+    $ cf bind-service my-application aerospike_session -c '{"setname":"session1"}'
+    ```
+1. Restage your application.
+
+    ```
+    $ cf restage <application-name>
+    ```
