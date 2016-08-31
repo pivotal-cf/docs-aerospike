@@ -7,7 +7,7 @@ This topic describes how to install and configure the Aerospike Service Broker f
 
 ##<a id='install'></a> Install and Configure the Aerospike Service Broker
 
-To add the Aerospike Service Broker for PCF to Ops Manager, follow the procedure for adding Pivotal Ops Manager tiles:
+To install and configure the Aerospike Service Broker tile, perform the following steps:
 
 1. Download the product file from Pivotal Network.
 
@@ -17,15 +17,15 @@ To add the Aerospike Service Broker for PCF to Ops Manager, follow the procedure
 
 1. Click the newly added **Aerospike Service Broker for PCF** tile.
 
-1. Put the hostname or IP address of one of the nodes of the Aerospike cluster into the **Aerospike DB Host** field.
+1. Put the hostname or IP address of one of the nodes of your Aerospike cluster into the **Aerospike DB Host** field.
 
 1. Ensure the port number in the **Aerospike DB Port** field is correct. This should match the **service port** as configured on the Aerospike database.
 
-1. Select the appropriate **Aerospike License Type** (Community or Enterprise)
+1. Select the appropriate **Aerospike License Type**, **Community** or **Enterprise**.
 
 1. In the **Aerospike Admin Namespace** field, enter the namespace that the Aerospike Service Broker will use to store service and application bindings.
 
-1. Enter the user credentials (User and Password) for the account information that the Service Broker will use to access the Aerospike database (Enterprise license only).
+1. If you have deployed the Enterprise Edition of the Aerospike database server, enter the **User** and **Password** for the account information that the Service Broker will use to access the Aerospike database.
 
 1. Click **Save**.
 
