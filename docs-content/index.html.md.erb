@@ -3,13 +3,13 @@ title: Aerospike Service Broker for PCF (BETA)
 owner: Partners
 ---
 
-This documentation describes the Aerospike Service Broker for Pivotal Cloud Foundry (PCF). The Aerospike Service Broker registers a service broker on PCF and exposes its service plans on the Marketplace. Developers can create instances of these service plans using Apps Manager or the cf Command Line Interface (CLI), and bind them to applications in order to access an existing Aerospike database.
+This documentation describes the Aerospike Service Broker for Pivotal Cloud Foundry (PCF). The Aerospike Service Broker registers a service broker on PCF and exposes its service plans on the Marketplace. Developers can create instances of these service plans using Apps Manager or the Cloud Foundry Command Line Interface (cf CLI), and bind them to applications to access an existing Aerospike database.
 
 ## <a id='overview'></a>Overview
 
 Aerospike is a high-performance, distributed, scalable NoSQL database and key/value store. 
 
-The Aerospike Service Broker for PCF integrates your Aerospike database with your PCF deployment, by automatically discovering the [namespaces](http://www.aerospike.com/docs/architecture/data-model.html#namespaces) that have been created on the database and exposing them as service plans in the Marketplace. Developers can create instances of these service plans and bind them to applications in order to provide connection information to the applications.
+The Aerospike Service Broker for PCF integrates your Aerospike database with your PCF deployment, by automatically discovering the [namespaces](http://www.aerospike.com/docs/architecture/data-model.html#namespaces) that have been created on the database and exposing them as service plans in the Marketplace. Developers can create instances of these service plans and bind them to applications to provide connection information to the applications.
 
 The Aerospike Service Broker for PCF has the following features:
 
