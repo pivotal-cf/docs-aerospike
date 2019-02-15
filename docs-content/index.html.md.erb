@@ -3,11 +3,6 @@ title: Aerospike Service Broker for PCF
 owner: Partners
 ---
 
-<p class="note warning"><strong> WARNING:</strong>
-This tile requires a Trusty stemcell.
-The end-of-life date for Ubuntu Trusty is April 2019.
-If a security vulnerability is found on this stemcell after April, it will not be fixed.</p>
-
 This documentation describes the Aerospike Service Broker for Pivotal Cloud Foundry (PCF). The Aerospike Service Broker registers a service broker on PCF and exposes its service plans on the Marketplace. Developers can create instances of these service plans using Apps Manager or the Cloud Foundry Command Line Interface (cf CLI), and bind them to applications to access an existing Aerospike database.
 
 ## <a id='overview'></a>Overview
@@ -56,14 +51,20 @@ The following table provides version and version-support information about Aeros
         <td>v2.1.x, v2.2.x, v2.3.x, and v2.4.x</td>
     </tr>
     <tr>
-       <td>BOSH stemcell version</td>
-       <td>Ubuntu Xenial</td>
+        <td>BOSH stemcell version</td>
+        <td>Ubuntu Xenial</td>
     </tr>
     <tr>
         <td>IaaS support</td>
         <td>AWS, OpenStack, vSphere, and GCP</td>
     </tr>
 </table>
+
+<p class="note warning"><strong> WARNING:</strong>
+Aerospike Service Broker for PCF v1.0.2
+and earlier require a Ubuntu Trusty stemcell.
+The end-of-life date for Ubuntu Trusty is April 2019.
+If a security vulnerability is found on this stemcell after April, it will not be fixed.</p>
 
 ## <a id="reqs"></a>Requirements
 
